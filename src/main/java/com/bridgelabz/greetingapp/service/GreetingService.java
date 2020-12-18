@@ -1,5 +1,7 @@
 package com.bridgelabz.greetingapp.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -29,6 +31,13 @@ public class GreetingService implements IGreetingService {
 	    public Optional<Greeting> getGreetingById(long id) {
 	        Optional<Greeting> greeting = greetingRepository.findById(id);
 	        return greeting;
+	    }
+	    
+	    @Override
+	    public List<Greeting> getAllGreetings() {
+	        List<Greeting> greetings = new ArrayList<>();
+	        greetingRepository.findAll().forEach(greeting -> greetings.add(greeting));
+	        return greetings;
 	    }
 
 }
